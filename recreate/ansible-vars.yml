@@ -1,3 +1,7 @@
+pulp_content__pulp_url: http://localhost
+pulp_content__user: admin
+pulp_content__password: test-pass-pulp
+
 pulp_configure_firewall: none  # I know, deprecated/not needed anymore
 
 pulp_webserver_disable_https: true  # just a test host ;-)
@@ -10,7 +14,7 @@ pulp_settings:
 pulp_user_home: "/mnt/repo-data/pulp"
 pulp_media_root: "/mnt/repo-data/pulp/media"
 
-pulp_default_admin_password: <password>
+pulp_default_admin_password: test-pass-pulp
 
 pulpcore_version: '3.21'
 

@@ -1,0 +1,58 @@
+- name: install pulp using squeezer
+  hosts: localhost
+  roles:
+    - pulp.pulp_installer.pulp_all_services
+  tasks:
+    - name: "create debian remote"
+      pulp.squeezer.deb_remote:
+        pulp_url: "{{ pulp_content__pulp_url }}"
+        username: "{{ pulp_content__username }}"
+        password: "{{ pulp_content__password }}"
+        name: "bullseye-backend"
+        state: present
+        architectures: "amd64 all"
+        distributions: "bullseye bullseye-updates bullseye-backports bullseye-backports-sloppy"
+        policy: "on_demand"
+        url: "http://deb.debian.org/debian"
+      register: pc__remotes
+    - name: "create debian repository"
+      pulp.squeezer.deb_repository:
+        pulp_url: "{{ pulp_content__pulp_url }}"
+        username: "{{ pulp_content__username }}"
+        password: "{{ pulp_content__password }}"
+        name: "bullseye"
+        state: "present"
+      register: pc__repos
+    
+    - name: "sync changed debian repos/remotes"
+      pulp.squeezer.deb_sync:
+        pulp_url: "{{ pulp_content__pulp_url }}"
+        username: "{{ pulp_content__username }}"
+        password: "{{ pulp_content__password }}"
+        mirror: True
+        remote: "bullseye-backend"
+        repository: "bullseye"
+    - name: "create debian publication"
+      pulp.squeezer.deb_publication:
+        pulp_url: "{{ pulp_content__pulp_url }}"
+        username: "{{ pulp_content__username }}"
+        password: "{{ pulp_content__password }}"
+        repository: bullseye
+        mode: verbatim
+        state: present
+      register: pc__publications
+    - name: map values
+      set_fact:
+        pc__pubnames: "{{ pc__publications.results | selectattr('changed','eq',true) | map(attribute='item') }}"
+    - name: "create debian distribution"
+      pulp.squeezer.deb_distribution:
+        pulp_url: "{{ pulp_content__pulp_url }}"
+        username: "{{ pulp_content__username }}"
+        password: "{{ pulp_content__password }}"
+        name: bullseye
+        base_path: bullseye
+        state: present
+        publication: "{{ (pc__publications.results | selectattr('item','eq',(pc__pubnames |
+          selectattr('name','eq',item.name) | first)) | first)['publication']['pulp_href'] }}"
+      when:
+        - pc__pubnames | selectattr('name','eq',item.name) | length > 0
