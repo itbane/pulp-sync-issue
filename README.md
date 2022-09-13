@@ -45,5 +45,6 @@ I've noticed that pulp-deb doesn't create content units for those packages (see 
 
 ~~~bash
 $ ansible-galaxy collection install pulp.squeezer pulp.pulp_install
+$ ansible-galaxy role install geerlingguy.postgresql
 $ ansible-playbook recreate/playbook.yaml -e @recreate/ansible-vars.yml
 ~~~

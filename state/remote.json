@@ -20,7 +20,7 @@
   "rate_limit": null,
   "distributions": "bullseye bullseye-updates bullseye-backports bullseye-backports-sloppy",
   "components": null,
-  "architectures": "amd64",
+  "architectures": "amd64 all",
   "sync_sources": false,
   "sync_udebs": false,
   "sync_installer": false,
