@@ -1,0 +1,11 @@
+{
+  "pulp_href": "/pulp/api/v3/repositories/deb/apt/e78ea6af-e8c3-4350-8499-97434302435c/",
+  "pulp_created": "2022-09-13T13:32:26.648601Z",
+  "versions_href": "/pulp/api/v3/repositories/deb/apt/e78ea6af-e8c3-4350-8499-97434302435c/versions/",
+  "pulp_labels": {},
+  "latest_version_href": "/pulp/api/v3/repositories/deb/apt/e78ea6af-e8c3-4350-8499-97434302435c/versions/1/",
+  "name": "bullseye",
+  "description": null,
+  "retain_repo_versions": null,
+  "remote": null
+}

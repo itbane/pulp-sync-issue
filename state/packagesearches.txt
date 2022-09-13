@@ -1,0 +1,59 @@
+# search for nginx package -> working
+$ curl -u admin:test localhost/pulp/api/v3/content/deb/packages/?package=nginx -s | jq
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "pulp_href": "/pulp/api/v3/content/deb/packages/2916d223-2794-4b9d-a6b8-3811177b0603/",
+      "pulp_created": "2022-09-13T13:32:43.828907Z",
+      "artifact": null,
+      "relative_path": "pool/updates/main/n/nginx/nginx_1.14.2-2+deb10u4_all.deb",
+      "md5": null,
+      "sha1": null,
+      "sha224": null,
+      "sha256": null,
+      "sha384": null,
+      "sha512": null,
+      "package": "nginx",
+      "source": null,
+      "version": "1.14.2-2+deb10u4",
+      "architecture": "all",
+      "section": "httpd",
+      "priority": "optional",
+      "origin": null,
+      "tag": null,
+      "bugs": null,
+      "essential": null,
+      "build_essential": null,
+      "installed_size": "98",
+      "maintainer": "Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>",
+      "original_maintainer": null,
+      "description": "small, powerful, scalable web/proxy server",
+      "description_md5": "04f6acc7fe672a4d62f4345c9addf4a7",
+      "homepage": "https://nginx.net",
+      "built_using": null,
+      "auto_built_package": null,
+      "multi_arch": null,
+      "breaks": null,
+      "conflicts": null,
+      "depends": "nginx-full (<< 1.14.2-2+deb10u4.1~) | nginx-light (<< 1.14.2-2+deb10u4.1~) | nginx-extras (<< 1.14.2-2+deb10u4.1~), nginx-full (>= 1.14.2-2+deb10u4) | nginx-light (>= 1.14.2-2+deb10u4) | nginx-extras (>= 1.14.2-2+deb10u4)",
+      "recommends": null,
+      "suggests": null,
+      "enhances": null,
+      "pre_depends": null,
+      "provides": null,
+      "replaces": null
+    }
+  ]
+}
+
+# search for ifenslave - not found
+$ curl -uadmin:test localhost/pulp/api/v3/content/deb/packages/?package=ifenslave -s | jq
+{
+  "count": 0,
+  "next": null,
+  "previous": null,
+  "results": []
+}

@@ -1,0 +1,17 @@
+# from localhost/pulp/api/v3/status/
+{                           
+  "component": "core",                           
+  "version": "3.21.0",
+  "package": "pulpcore"
+},
+{
+  "component": "deb",
+  "version": "2.19.1",
+  "package": "pulp_deb"
+}
+
+# installation with ansible
+ansible 2.10.8
+
+pulp.pulp_installer  3.20.5 
+pulp.squeezer        0.0.11

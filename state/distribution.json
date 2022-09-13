@@ -1,0 +1,11 @@
+{
+  "pulp_href": "/pulp/api/v3/distributions/deb/apt/98edec12-af2d-4c7d-bb8f-639f98a8d427/",
+  "pulp_created": "2022-09-13T13:37:05.068259Z",
+  "base_path": "bullseye",
+  "base_url": "https://pkg.kd.ausecus.de/pulp/content/bullseye/",
+  "content_guard": null,
+  "pulp_labels": {},
+  "name": "bullseye",
+  "repository": null,
+  "publication": "/pulp/api/v3/publications/deb/verbatim/4cd6ef32-94d9-4414-b350-dc0b599607a0/"
+}
